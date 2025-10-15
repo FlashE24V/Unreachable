@@ -1,20 +1,15 @@
-name: Test Unreachable CSV Run
+name: Test CURRENT Unreachable List (no 48h)
 
 on:
-  workflow_dispatch:
-    inputs:
-      threshold_hours:
-        description: "Hours a station must be unreachable (default 48)"
-        required: false
-        default: "48"
+  workflow_dispatch: {}
   push:
-    branches: [ main ]  # optional; runs when you push
+    branches: [ main ]  # optional
 
 permissions:
   contents: write
 
 jobs:
-  test-run:
+  current-unreachable:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -32,27 +27,53 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas requests
 
-      - name: Run your current script
+      - name: Run your existing script
         env:
           CP_USERNAME: ${{ secrets.CP_USERNAME }}
           CP_PASSWORD: ${{ secrets.CP_PASSWORD }}
-          # Provide a safe default (48) if blank
-          THRESHOLD_HOURS: ${{ inputs.threshold_hours || '48' }}
+          THRESHOLD_HOURS: '48'
         run: |
-          echo "Running mail out.py with THRESHOLD_HOURS=${THRESHOLD_HOURS}"
-          python "mail out.py" || echo "⚠️ Script exited non-zero, continuing for debug"
+          python "mail out.py"
 
-      - name: Ensure CSV exists (for visibility)
+      - name: Build CURRENT unreachable CSV (no 48h threshold)
         run: |
-          if [ ! -f alerts_unreachable_gt48.csv ]; then
-            echo "stationID,stationName,Address,City,State,charger_type,since_iso,hours_down" > alerts_unreachable_gt48.csv
-            echo "Created placeholder alerts_unreachable_gt48.csv"
-          fi
+          python - << 'PY'
+          import pandas as pd
+          from pathlib import Path
 
-      - name: Commit generated files (if changed)
+          src = Path('status_latest_slim.csv')
+          if not src.exists():
+            raise SystemExit("status_latest_slim.csv not found; did the script run?")
+
+          df = pd.read_csv(src)
+
+          # Normalize fields
+          lps = df.get("LastPortStatus", pd.Series([""]*len(df))).fillna("").astype(str).str.upper().str.strip()
+          net = df.get("StationNetworkStatus", pd.Series([""]*len(df))).fillna("").astype(str).str.upper().str.strip()
+
+          unreachable_mask = lps.isin({"UNAVAILABLE","OUTOFORDER","FAULTED","MAINTENANCE"}) | net.isin({"UNAVAILABLE","OFFLINE"})
+
+          cols = ["stationID","stationName","Address","City","State","Charger type","stationModel",
+                  "StationNetworkStatus","LastPortStatus","faultReason","StatusTimestamp","hours_unreachable"]
+          cols = [c for c in cols if c in df.columns]
+          out = df.loc[unreachable_mask, cols].copy()
+          if "Charger type" in out.columns:
+            out.rename(columns={"Charger type":"charger_type"}, inplace=True)
+          out.to_csv("alerts_unreachable_current.csv", index=False, encoding="utf-8")
+          print(f"Wrote alerts_unreachable_current.csv with {len(out)} rows.")
+          PY
+
+      - name: Commit CURRENT list (and usual outputs) if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add alerts_unreachable_gt48.csv alerts_unreachable_gt48.json .cp_unreach_state.json status_latest_slim.csv stations_per_station_slim.csv chargepoint_refresh.log 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "Test run output ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+          git add alerts_unreachable_current.csv alerts_unreachable_gt48.csv alerts_unreachable_gt48.json \
+                  .cp_unreach_state.json status_latest_slim.csv stations_per_station_slim.csv chargepoint_refresh.log 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Add current unreachable list ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
           git push || true
+
+      - name: Upload CSV as artifact (for easy download)
+        uses: actions/upload-artifact@v4
+        with:
+          name: alerts_unreachable_current
+          path: alerts_unreachable_current.csv
