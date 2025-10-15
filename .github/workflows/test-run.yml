@@ -3,7 +3,7 @@ name: Test CURRENT Unreachable List (no 48h)
 on:
   workflow_dispatch: {}
   push:
-    branches: [ main ]  # optional
+    branches: [ main ]  # optional: also run on pushes to main
 
 permissions:
   contents: write
@@ -47,18 +47,35 @@ jobs:
 
           df = pd.read_csv(src)
 
-          # Normalize fields
-          lps = df.get("LastPortStatus", pd.Series([""]*len(df))).fillna("").astype(str).str.upper().str.strip()
-          net = df.get("StationNetworkStatus", pd.Series([""]*len(df))).fillna("").astype(str).str.upper().str.strip()
+          def norm_col(name):
+            s = df.get(name)
+            if s is None:
+              return pd.Series([""]*len(df))
+            return s.fillna("").astype(str).str.upper().str.strip()
 
-          unreachable_mask = lps.isin({"UNAVAILABLE","OUTOFORDER","FAULTED","MAINTENANCE"}) | net.isin({"UNAVAILABLE","OFFLINE"})
+          lps = norm_col("LastPortStatus")
+          net = norm_col("StationNetworkStatus")
+          fr  = norm_col("faultReason")
 
-          cols = ["stationID","stationName","Address","City","State","Charger type","stationModel",
-                  "StationNetworkStatus","LastPortStatus","faultReason","StatusTimestamp","hours_unreachable"]
+          # Expanded unreachable definitions (matches your data)
+          unreachable_mask = (
+              lps.isin({
+                  "UNREACHABLE","UNAVAILABLE","OUTOFORDER","OUT OF ORDER",
+                  "FAULTED","MAINTENANCE","NEEDS SERVICE","NEEDS_SERVICE"
+              })
+              | net.isin({"UNREACHABLE","UNAVAILABLE","OFFLINE"})
+              | fr.str.contains(r"UNREACHABLE|POWERED[ -]?OFF", regex=True)
+          )
+
+          cols = [
+            "stationID","stationName","Address","City","State","Charger type","stationModel",
+            "StationNetworkStatus","LastPortStatus","faultReason","StatusTimestamp","hours_unreachable"
+          ]
           cols = [c for c in cols if c in df.columns]
           out = df.loc[unreachable_mask, cols].copy()
           if "Charger type" in out.columns:
             out.rename(columns={"Charger type":"charger_type"}, inplace=True)
+
           out.to_csv("alerts_unreachable_current.csv", index=False, encoding="utf-8")
           print(f"Wrote alerts_unreachable_current.csv with {len(out)} rows.")
           PY
