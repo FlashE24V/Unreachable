@@ -31,15 +31,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas requests
 
-      # Run YOUR script — adjust the file name below if needed.
-      # Quotes are important because your file name has a space.
+      # Run YOUR script (filename has a space — keep the quotes)
       - name: Run ChargePoint fetch/analyzer
         env:
           CP_USERNAME: ${{ secrets.CP_USERNAME }}
           CP_PASSWORD: ${{ secrets.CP_PASSWORD }}
-          THRESHOLD_HOURS: '48'   # optional; your script defaults to 48 if not set
+          THRESHOLD_HOURS: '48'   # optional; your script defaults to 48
         run: |
-          python "mail out.py"
+          python "Status out.py"
 
       - name: Verify expected outputs
         run: |
