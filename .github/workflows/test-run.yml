@@ -1,11 +1,10 @@
-name: CURRENT Unreachable (no email)
+name: CURRENT Unreachable + Timestamped History
 
 on:
-  # Auto-run every 2 days at ~5 AM New York time (EST/EDT adjusted)
+  # Auto-run every 2 days at ~5 AM New York time (10:00 UTC)
   schedule:
-    - cron: "0 10 */2 11-3 *"  # 10 UTC = 5 AM EST (Nov–Mar)
-    - cron: "0 9  */2 4-10 *"  # 9 UTC  = 5 AM EDT (Apr–Oct)
-  workflow_dispatch: {}        # allows manual runs
+    - cron: "0 10 */2 * *"
+  workflow_dispatch: {}
   push:
     branches: [ main ]
 
@@ -13,7 +12,7 @@ permissions:
   contents: write
 
 jobs:
-  current-unreachable:
+  refresh-stamp-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -32,11 +31,54 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas requests
 
-      - name: Verify data file
+      # 1) Fetch latest status (generates status_latest_slim.csv)
+      - name: Fetch latest status (ChargePoint)
+        env:
+          CP_USERNAME: ${{ secrets.CP_USERNAME }}
+          CP_PASSWORD: ${{ secrets.CP_PASSWORD }}
+          THRESHOLD_HOURS: '48'
+        run: |
+          python "mail out.py"
+
+      # 2) Verify file exists
+      - name: Verify data file exists
         run: |
           ls -la
-          test -f status_latest_slim.csv || (echo "status_latest_slim.csv not found" && exit 1)
+          test -f status_latest_slim.csv || (echo "status_latest_slim.csv not found after fetch" && exit 1)
 
+      # 3) Add snapshot timestamp, append to history, save per-run snapshot
+      - name: Stamp snapshot time and build history
+        run: |
+          python - << 'PY'
+          import pandas as pd
+          from pathlib import Path
+          from datetime import datetime, timezone
+
+          src = Path('status_latest_slim.csv')
+          df = pd.read_csv(src)
+
+          snap = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+          df['snapshot_utc'] = snap
+
+          # overwrite current with stamped version
+          df.to_csv(src, index=False, encoding='utf-8')
+
+          # append to cumulative history
+          hist = Path('status_history.csv')
+          if hist.exists():
+              df.to_csv(hist, mode='a', index=False, header=False, encoding='utf-8')
+          else:
+              df.to_csv(hist, index=False, encoding='utf-8')
+
+          # optional: keep a per-run snapshot file
+          snaps = Path('snapshots'); snaps.mkdir(exist_ok=True)
+          snap_name = snap.replace(':','').replace('-','').replace('T','_')
+          (snaps / f'status_latest_slim_{snap_name}.csv').write_text(df.to_csv(index=False), encoding='utf-8')
+
+          print(f"Stamped snapshot_utc={snap} and updated history.")
+          PY
+
+      # 4) Build CURRENT unreachable list (no 48h filter)
       - name: Build CURRENT unreachable CSV
         run: |
           python - << 'PY'
@@ -44,59 +86,53 @@ jobs:
           from pathlib import Path
 
           src = Path('status_latest_slim.csv')
-          if not src.exists():
-              raise SystemExit("status_latest_slim.csv not found; please add or generate it before run.")
-
           df = pd.read_csv(src)
           print("Columns found:", list(df.columns))
 
-          def norm_col(name):
-              s = df.get(name)
-              if s is None:
-                  return pd.Series([""] * len(df))
+          def norm(s):
               return s.fillna("").astype(str).str.upper().str.strip()
 
-          lps = norm_col("LastPortStatus")
-          net = norm_col("StationNetworkStatus")
-          fr  = norm_col("faultReason")
-          if "faultReason" not in df.columns and "FaultReason" in df.columns:
-              fr = df["FaultReason"].fillna("").astype(str).str.upper().str.strip()
+          lps = norm(df.get("LastPortStatus", pd.Series([""]*len(df))))
+          net = norm(df.get("StationNetworkStatus", pd.Series([""]*len(df))))
+          fr  = norm(df.get("faultReason", pd.Series([""]*len(df))))
 
-          # Identify unreachable chargers
-          unreachable_mask = (
-              lps.isin({
-                  "UNREACHABLE","UNAVAILABLE","OUTOFORDER","OUT OF ORDER",
-                  "FAULTED","MAINTENANCE","NEEDS SERVICE","NEEDS_SERVICE"
-              })
+          unreachable = (
+              lps.isin({"UNREACHABLE","UNAVAILABLE","OUTOFORDER","OUT OF ORDER",
+                        "FAULTED","MAINTENANCE","NEEDS SERVICE","NEEDS_SERVICE"})
               | net.isin({"UNREACHABLE","UNAVAILABLE","OFFLINE"})
               | fr.str.contains(r"UNREACHABLE|POWERED[ -]?OFF", regex=True, na=False)
           )
 
-          cols = [
-              "stationID","stationName","Address","City","State","Charger type","stationModel",
-              "StationNetworkStatus","LastPortStatus","faultReason","StatusTimestamp","hours_unreachable"
-          ]
-          cols = [c for c in cols if c in df.columns]
+          cols = [c for c in [
+            "stationID","stationName","Address","City","State","Charger type","stationModel",
+            "StationNetworkStatus","LastPortStatus","faultReason","StatusTimestamp",
+            "hours_unreachable","snapshot_utc"
+          ] if c in df.columns]
 
-          out = df.loc[unreachable_mask, cols].copy()
+          out = df.loc[unreachable, cols].copy()
           if "Charger type" in out.columns:
-              out.rename(columns={"Charger type": "charger_type"}, inplace=True)
+            out.rename(columns={"Charger type":"charger_type"}, inplace=True)
 
           out.to_csv("alerts_unreachable_current.csv", index=False, encoding="utf-8")
           print(f"Wrote alerts_unreachable_current.csv with {len(out)} rows.")
           PY
 
-      - name: Commit CURRENT list if changed
+      # 5) Commit changes if any
+      - name: Commit updated CSVs if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add alerts_unreachable_current.csv status_latest_slim.csv chargepoint_refresh.log 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "Auto: unreachable list update ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+          git add status_latest_slim.csv status_history.csv snapshots/ alerts_unreachable_current.csv chargepoint_refresh.log 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Auto: refresh + timestamp + current unreachable ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
           git push || true
 
-      - name: Upload CSV as artifact
+      # 6) Upload artifacts for easy download
+      - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: alerts_unreachable_current
-          path: alerts_unreachable_current.csv
+          name: latest-and-unreachable
+          path: |
+            status_latest_slim.csv
+            status_history.csv
+            alerts_unreachable_current.csv
