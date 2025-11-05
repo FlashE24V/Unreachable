@@ -1,18 +1,18 @@
-name: CURRENT Unreachable + Timestamped History
+name: ChargePoint Fetch + Outputs (auto)
 
 on:
-  # Auto-run every 2 days at ~5 AM New York time (10:00 UTC)
+  # Runs every 2 days at ~5:00 AM New York time (10:00 UTC)
   schedule:
     - cron: "0 10 */2 * *"
-  workflow_dispatch: {}
+  workflow_dispatch: {}      # allow manual runs from the Actions tab
   push:
-    branches: [ main ]
+    branches: [ main ]       # optional: also run when you push to main
 
 permissions:
   contents: write
 
 jobs:
-  refresh-stamp-build:
+  fetch-and-commit:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,108 +31,46 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas requests
 
-      # 1) Fetch latest status (generates status_latest_slim.csv)
-      - name: Fetch latest status (ChargePoint)
+      # Run YOUR script — adjust the file name below if needed.
+      # Quotes are important because your file name has a space.
+      - name: Run ChargePoint fetch/analyzer
         env:
           CP_USERNAME: ${{ secrets.CP_USERNAME }}
           CP_PASSWORD: ${{ secrets.CP_PASSWORD }}
-          THRESHOLD_HOURS: '48'
+          THRESHOLD_HOURS: '48'   # optional; your script defaults to 48 if not set
         run: |
           python "mail out.py"
 
-      # 2) Verify file exists
-      - name: Verify data file exists
+      - name: Verify expected outputs
         run: |
           ls -la
-          test -f status_latest_slim.csv || (echo "status_latest_slim.csv not found after fetch" && exit 1)
+          test -f status_latest_slim.csv || (echo "status_latest_slim.csv not found after script run" && exit 1)
+          test -f stations_per_station_slim.csv || echo "stations_per_station_slim.csv missing (non-fatal)"
+          test -f alerts_unreachable_gt48.json   || echo "alerts_unreachable_gt48.json missing (non-fatal)"
+          test -f .cp_unreach_state.json         || echo ".cp_unreach_state.json missing (non-fatal)"
+          test -f chargepoint_refresh.log        || echo "chargepoint_refresh.log missing (non-fatal)"
 
-      # 3) Add snapshot timestamp, append to history, save per-run snapshot
-      - name: Stamp snapshot time and build history
-        run: |
-          python - << 'PY'
-          import pandas as pd
-          from pathlib import Path
-          from datetime import datetime, timezone
-
-          src = Path('status_latest_slim.csv')
-          df = pd.read_csv(src)
-
-          snap = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-          df['snapshot_utc'] = snap
-
-          # overwrite current with stamped version
-          df.to_csv(src, index=False, encoding='utf-8')
-
-          # append to cumulative history
-          hist = Path('status_history.csv')
-          if hist.exists():
-              df.to_csv(hist, mode='a', index=False, header=False, encoding='utf-8')
-          else:
-              df.to_csv(hist, index=False, encoding='utf-8')
-
-          # optional: keep a per-run snapshot file
-          snaps = Path('snapshots'); snaps.mkdir(exist_ok=True)
-          snap_name = snap.replace(':','').replace('-','').replace('T','_')
-          (snaps / f'status_latest_slim_{snap_name}.csv').write_text(df.to_csv(index=False), encoding='utf-8')
-
-          print(f"Stamped snapshot_utc={snap} and updated history.")
-          PY
-
-      # 4) Build CURRENT unreachable list (no 48h filter)
-      - name: Build CURRENT unreachable CSV
-        run: |
-          python - << 'PY'
-          import pandas as pd
-          from pathlib import Path
-
-          src = Path('status_latest_slim.csv')
-          df = pd.read_csv(src)
-          print("Columns found:", list(df.columns))
-
-          def norm(s):
-              return s.fillna("").astype(str).str.upper().str.strip()
-
-          lps = norm(df.get("LastPortStatus", pd.Series([""]*len(df))))
-          net = norm(df.get("StationNetworkStatus", pd.Series([""]*len(df))))
-          fr  = norm(df.get("faultReason", pd.Series([""]*len(df))))
-
-          unreachable = (
-              lps.isin({"UNREACHABLE","UNAVAILABLE","OUTOFORDER","OUT OF ORDER",
-                        "FAULTED","MAINTENANCE","NEEDS SERVICE","NEEDS_SERVICE"})
-              | net.isin({"UNREACHABLE","UNAVAILABLE","OFFLINE"})
-              | fr.str.contains(r"UNREACHABLE|POWERED[ -]?OFF", regex=True, na=False)
-          )
-
-          cols = [c for c in [
-            "stationID","stationName","Address","City","State","Charger type","stationModel",
-            "StationNetworkStatus","LastPortStatus","faultReason","StatusTimestamp",
-            "hours_unreachable","snapshot_utc"
-          ] if c in df.columns]
-
-          out = df.loc[unreachable, cols].copy()
-          if "Charger type" in out.columns:
-            out.rename(columns={"Charger type":"charger_type"}, inplace=True)
-
-          out.to_csv("alerts_unreachable_current.csv", index=False, encoding="utf-8")
-          print(f"Wrote alerts_unreachable_current.csv with {len(out)} rows.")
-          PY
-
-      # 5) Commit changes if any
-      - name: Commit updated CSVs if changed
+      - name: Commit updates if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add status_latest_slim.csv status_history.csv snapshots/ alerts_unreachable_current.csv chargepoint_refresh.log 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "Auto: refresh + timestamp + current unreachable ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+          git add \
+            status_latest_slim.csv \
+            stations_per_station_slim.csv \
+            alerts_unreachable_gt48.json \
+            .cp_unreach_state.json \
+            chargepoint_refresh.log 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "Auto: CP refresh ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
           git push || true
 
-      # 6) Upload artifacts for easy download
-      - name: Upload artifacts
+      - name: Upload artifacts (download from run page)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: latest-and-unreachable
+          name: cp-outputs
           path: |
             status_latest_slim.csv
-            status_history.csv
-            alerts_unreachable_current.csv
+            stations_per_station_slim.csv
+            alerts_unreachable_gt48.json
+            .cp_unreach_state.json
+            chargepoint_refresh.log
