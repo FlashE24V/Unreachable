@@ -1,15 +1,14 @@
 name: ChargePoint Fetch + Outputs (auto)
 
 on:
-  # Runs every 2 days at ~5:00 AM New York time (10:00 UTC)
+  workflow_dispatch:
   schedule:
-    - cron: "0 10 */2 * *"
-  workflow_dispatch: {}      # allow manual runs from the Actions tab
+    - cron: "0 10 */2 * *"   # every 2 days at 10:00 UTC (~5am NY)
   push:
-    branches: [ main ]       # optional: also run when you push to main
+    branches: [ main ]
 
 permissions:
-  contents: write
+  contents: write   # ✅ REQUIRED to push CSVs back to repo
 
 jobs:
   fetch-and-commit:
@@ -31,24 +30,23 @@ jobs:
           python -m pip install --upgrade pip
           pip install pandas requests
 
-      # Run YOUR script (filename has a space — keep the quotes)
       - name: Run ChargePoint fetch/analyzer
         env:
           CP_USERNAME: ${{ secrets.CP_USERNAME }}
           CP_PASSWORD: ${{ secrets.CP_PASSWORD }}
-          THRESHOLD_HOURS: "48"   # optional; your script defaults to 48
+          THRESHOLD_HOURS: "48"
         run: |
           python "Status out.py"
 
       - name: Verify expected outputs
         run: |
           ls -la
-          test -f status_latest_slim.csv || (echo "status_latest_slim.csv not found after script run" && exit 1)
-          test -f stations_per_station_slim.csv || echo "stations_per_station_slim.csv missing (non-fatal)"
-          test -f alerts_unreachable_gt48.json   || echo "alerts_unreachable_gt48.json missing (non-fatal)"
-          test -f unreachable_event_counts.csv   || echo "unreachable_event_counts.csv missing (non-fatal)"
-          test -f .cp_unreach_state.json         || echo ".cp_unreach_state.json missing (non-fatal)"
-          test -f chargepoint_refresh.log        || echo "chargepoint_refresh.log missing (non-fatal)"
+          test -f status_latest_slim.csv || (echo "status_latest_slim.csv missing" && exit 1)
+          test -f stations_per_station_slim.csv || echo "stations_per_station_slim.csv missing"
+          test -f unreachable_event_counts.csv || echo "unreachable_event_counts.csv missing"
+          test -f alerts_unreachable_gt48.json || echo "alerts_unreachable_gt48.json missing"
+          test -f .cp_unreach_state.json || echo ".cp_unreach_state.json missing"
+          test -f chargepoint_refresh.log || echo "chargepoint_refresh.log missing"
 
       - name: Commit updates if changed
         run: |
@@ -58,15 +56,15 @@ jobs:
           git add \
             status_latest_slim.csv \
             stations_per_station_slim.csv \
-            alerts_unreachable_gt48.json \
             unreachable_event_counts.csv \
+            alerts_unreachable_gt48.json \
             .cp_unreach_state.json \
             chargepoint_refresh.log 2>/dev/null || true
 
-          git diff --staged --quiet || git commit -m "Auto: CP refresh ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
-          git push || true
+          git diff --staged --quiet || git commit -m "Auto: ChargePoint refresh ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+          git push
 
-      - name: Upload artifacts (download from run page)
+      - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -74,7 +72,7 @@ jobs:
           path: |
             status_latest_slim.csv
             stations_per_station_slim.csv
-            alerts_unreachable_gt48.json
             unreachable_event_counts.csv
+            alerts_unreachable_gt48.json
             .cp_unreach_state.json
             chargepoint_refresh.log
