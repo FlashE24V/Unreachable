@@ -1,1 +1,1902 @@
-[]
+[
+  {
+    "stationID": "1:11925611",
+    "stationName": "NYC FLEET / NYPD_ARCHERGN-2",
+    "Address": "92-33 168th St",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2024-12-13T11:19:44+00:00",
+    "hours_down": 10155.8
+  },
+  {
+    "stationID": "1:120563",
+    "stationName": "NYC FLEET / DPRQNSSTHSE#1#2",
+    "Address": "43 Flushing Meadows Corona Park Rd",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-02-02T23:10:06+00:00",
+    "hours_down": 160.0
+  },
+  {
+    "stationID": "1:122895",
+    "stationName": "NYC FLEET / DOE_K0001",
+    "Address": "50 Bedford Ave",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-02-27T08:00:04+00:00",
+    "hours_down": 34639.2
+  },
+  {
+    "stationID": "1:122919",
+    "stationName": "NYC FLEET / DOE_ Q0002",
+    "Address": "165-65 84th Ave",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2018-12-04T17:15:20+00:00",
+    "hours_down": 62973.9
+  },
+  {
+    "stationID": "1:122971",
+    "stationName": "NYC FLEET / DOE_ Q0001",
+    "Address": "165-65 84th Ave",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-02T03:03:21+00:00",
+    "hours_down": 34572.1
+  },
+  {
+    "stationID": "1:122979",
+    "stationName": "NYC FLEET / DOE_ R0001",
+    "Address": "6581 Hylan Blvd",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2019-03-07T18:00:07+00:00",
+    "hours_down": 60741.2
+  },
+  {
+    "stationID": "1:122989",
+    "stationName": "NYC FLEET / OEMHQCADMAN-10",
+    "Address": "165 Cadman Plaza E",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-02T05:40:23+00:00",
+    "hours_down": 34569.5
+  },
+  {
+    "stationID": "1:122999",
+    "stationName": "NYC FLEET / DOH_56 DRIVE",
+    "Address": "5617 56th Dr",
+    "City": "queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-02T03:35:39+00:00",
+    "hours_down": 34571.6
+  },
+  {
+    "stationID": "1:12657191",
+    "stationName": "NYC FLEET / DOT_SPARE-4",
+    "Address": "42 South St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-17T08:56:38+00:00",
+    "hours_down": 2766.2
+  },
+  {
+    "stationID": "1:12796101",
+    "stationName": "NYC FLEET / DOT_SPARE-1",
+    "Address": "32 Old Slip",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-17T12:36:37+00:00",
+    "hours_down": 2762.6
+  },
+  {
+    "stationID": "1:12796151",
+    "stationName": "NYC FLEET / DOT_SPARE-2",
+    "Address": "32 Old Slip",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-17T12:36:37+00:00",
+    "hours_down": 2762.6
+  },
+  {
+    "stationID": "1:12796171",
+    "stationName": "NYC FLEET / DOT_SPARE-3",
+    "Address": "42 South St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-17T12:36:37+00:00",
+    "hours_down": 2762.6
+  },
+  {
+    "stationID": "1:12807661",
+    "stationName": "NYC FLEET / DOTMASPETHQNS-2",
+    "Address": "58-50 57th R",
+    "City": "Maspeth",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-27T17:45:54+00:00",
+    "hours_down": 309.4
+  },
+  {
+    "stationID": "1:12937081",
+    "stationName": "NYC FLEET / NYPDHQ_1PP_9_L3",
+    "Address": "1 Police Plaza",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2024-12-12T23:24:37+00:00",
+    "hours_down": 10167.8
+  },
+  {
+    "stationID": "1:13014531",
+    "stationName": "NYC FLEET / DPR_QBLIC_5&6",
+    "Address": "1001 Queens Plaza S",
+    "City": "LIC",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-02-02T23:17:45+00:00",
+    "hours_down": 159.9
+  },
+  {
+    "stationID": "1:13015941",
+    "stationName": "NYC FLEET / DPR_ARSENAL17",
+    "Address": "East Dr",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-11-25T13:47:25+00:00",
+    "hours_down": 1825.4
+  },
+  {
+    "stationID": "1:13092151",
+    "stationName": "NYC FLEET / DSNY_BX05-2",
+    "Address": "1310 Cromwell Ave",
+    "City": "Mount Eden",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-02-07T11:26:01+00:00",
+    "hours_down": 51.7
+  },
+  {
+    "stationID": "1:13122791",
+    "stationName": "NYC FLEET / DSNY_BK12-S1",
+    "Address": "5602 19th Ave",
+    "City": "Mapleton",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-26T04:06:13+00:00",
+    "hours_down": 347.1
+  },
+  {
+    "stationID": "1:13123381",
+    "stationName": "NYC FLEET / DSNY_BK12-S2",
+    "Address": "5602 19th Ave",
+    "City": "Mapleton",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-06-20T00:06:47+00:00",
+    "hours_down": 5631.1
+  },
+  {
+    "stationID": "1:13162271",
+    "stationName": "NYC FLEET / DEP_MNRPR_1_L3",
+    "Address": "30 Pike St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2023-12-15T15:28:11+00:00",
+    "hours_down": 18887.7
+  },
+  {
+    "stationID": "1:13182391",
+    "stationName": "NYC FLEET / DSNY_FBF-S3",
+    "Address": "50 Aviation Rd",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-02-03T21:33:29+00:00",
+    "hours_down": 137.6
+  },
+  {
+    "stationID": "1:13191581",
+    "stationName": "NYC FLEET / DEPNTWNCRK_2_L3",
+    "Address": "319 Greenpoint Ave",
+    "City": "Greenpoint",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2025-10-15T19:38:28+00:00",
+    "hours_down": 2803.5
+  },
+  {
+    "stationID": "1:13219921",
+    "stationName": "NYC FLEET / DEP_SIREPAIR-S1",
+    "Address": "182 Joline Ave",
+    "City": "Tottenville",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-24T21:27:05+00:00",
+    "hours_down": 377.7
+  },
+  {
+    "stationID": "1:13221341",
+    "stationName": "NYC FLEET / HRA_FOSTER-S1",
+    "Address": "10300 Foster Avenue",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-09-07T14:34:25+00:00",
+    "hours_down": 3720.6
+  },
+  {
+    "stationID": "1:13222201",
+    "stationName": "NYC FLEET / NYPD_PSA7-1",
+    "Address": "737 Melrose Ave",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-03-07T04:03:47+00:00",
+    "hours_down": 8147.1
+  },
+  {
+    "stationID": "1:13222741",
+    "stationName": "NYC FLEET / DSNY_SI3A-S3",
+    "Address": "1000 West Service Road",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-08-12T06:00:53+00:00",
+    "hours_down": 4353.2
+  },
+  {
+    "stationID": "1:13223561",
+    "stationName": "NYC FLEET / NYPD_SPRGFLD-2",
+    "Address": "174-20 N Boundary Rd",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2023-08-19T00:11:50+00:00",
+    "hours_down": 21735.0
+  },
+  {
+    "stationID": "1:13224261",
+    "stationName": "NYC FLEET / DPR_BXRVRH-S1",
+    "Address": "1490 Sheridan Blvd.",
+    "City": "Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-20T03:26:46+00:00",
+    "hours_down": 491.7
+  },
+  {
+    "stationID": "1:13227961",
+    "stationName": "NYC FLEET / DPR_GLDITRPK-S1",
+    "Address": "40 W 143rd St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-16T03:58:28+00:00",
+    "hours_down": 1331.2
+  },
+  {
+    "stationID": "1:13229601",
+    "stationName": "NYC FLEET / DSNY_FBF-S1",
+    "Address": "50 Aviation Rd",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-26T01:12:33+00:00",
+    "hours_down": 1094.0
+  },
+  {
+    "stationID": "1:13231471",
+    "stationName": "NYC FLEET / DSNY_FBF-S2",
+    "Address": "50 Aviation Rd",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-02-06T14:01:16+00:00",
+    "hours_down": 73.2
+  },
+  {
+    "stationID": "1:13233241",
+    "stationName": "NYC FLEET / DSNY_BK11-S3",
+    "Address": "1824 Shore Pkwy",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-07T02:09:24+00:00",
+    "hours_down": 1549.0
+  },
+  {
+    "stationID": "1:13241121",
+    "stationName": "NYC FLEET / DSNY_BK11-S2",
+    "Address": "1824 Shore Pkwy",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-09-05T14:38:42+00:00",
+    "hours_down": 3768.5
+  },
+  {
+    "stationID": "1:13242111",
+    "stationName": "NYC FLEET / DSNY_BK11-S4",
+    "Address": "1824 Shore Pkwy",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-25T21:08:21+00:00",
+    "hours_down": 354.0
+  },
+  {
+    "stationID": "1:13242711",
+    "stationName": "NYC FLEET / DSNY_BK11-S1",
+    "Address": "1824 Shore Pkwy",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-08-12T22:14:49+00:00",
+    "hours_down": 4336.9
+  },
+  {
+    "stationID": "1:13258301",
+    "stationName": "NYC FLEET / DSNY_SITS-S1",
+    "Address": "600 West Service Road",
+    "City": "Travis - Chelsea",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-07-25T14:40:42+00:00",
+    "hours_down": 4776.5
+  },
+  {
+    "stationID": "1:13259221",
+    "stationName": "NYC FLEET / DPRCUNINGHM-S3",
+    "Address": "Fresh Meadows Cunningham parking lot",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-27T05:51:23+00:00",
+    "hours_down": 321.3
+  },
+  {
+    "stationID": "1:13260351",
+    "stationName": "NYC FLEET / DPRWFMARINA-S2",
+    "Address": "1 Marina Rd",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-10T18:32:50+00:00",
+    "hours_down": 1460.6
+  },
+  {
+    "stationID": "1:13417501",
+    "stationName": "NYC FLEET / NYPD_69PCT-2",
+    "Address": "9720 Foster Ave",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2024-07-31T12:36:44+00:00",
+    "hours_down": 13394.6
+  },
+  {
+    "stationID": "1:13584601",
+    "stationName": "NYC FLEET / NYPD_25PCT-2",
+    "Address": "120 E 119th St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-16T13:19:34+00:00",
+    "hours_down": 1321.9
+  },
+  {
+    "stationID": "1:13646161",
+    "stationName": "NYC FLEET / NYPD_SRG2",
+    "Address": "1278 Sedgwick Ave",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-15T01:11:13+00:00",
+    "hours_down": 1358.0
+  },
+  {
+    "stationID": "1:136517",
+    "stationName": "NYC FLEET / DEP_OWLS HE",
+    "Address": "6700 Shore Rd",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-02-02T23:04:48+00:00",
+    "hours_down": 160.1
+  },
+  {
+    "stationID": "1:136615",
+    "stationName": "NYC FLEET / DEP_ASTORIA #1",
+    "Address": "43-1 Berrian Blvd",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-02-05T07:57:00+00:00",
+    "hours_down": 103.2
+  },
+  {
+    "stationID": "1:13699311",
+    "stationName": "NYC FLEET / NYPD_MIDSOUTH1",
+    "Address": "357 W 35th St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-25T16:39:37+00:00",
+    "hours_down": 358.5
+  },
+  {
+    "stationID": "1:13699331",
+    "stationName": "NYC FLEET / NYPD_MIDSOUTH2",
+    "Address": "357 W 35th St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2024-07-11T16:35:44+00:00",
+    "hours_down": 13870.6
+  },
+  {
+    "stationID": "1:13730571",
+    "stationName": "NYC FLEET / DSNY_SI02-S1",
+    "Address": "2538 Richmond Ave",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-24T04:16:56+00:00",
+    "hours_down": 394.9
+  },
+  {
+    "stationID": "1:13731151",
+    "stationName": "NYC FLEET / DPR_WPP-S1",
+    "Address": "161 Chester Ave",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-17T02:12:01+00:00",
+    "hours_down": 1309.0
+  },
+  {
+    "stationID": "1:13733391",
+    "stationName": "NYC FLEET / DEP_SIREPAIR-S2",
+    "Address": "182 Joline Ave",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-11T21:38:10+00:00",
+    "hours_down": 1433.5
+  },
+  {
+    "stationID": "1:13744111",
+    "stationName": "NYC FLEET / DDC_HQ-S1",
+    "Address": "3030 Thomson Ave",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-04T21:34:36+00:00",
+    "hours_down": 1601.6
+  },
+  {
+    "stationID": "1:13745651",
+    "stationName": "NYC FLEET / DOT_PIER36-S1",
+    "Address": "299 South St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-27T04:46:16+00:00",
+    "hours_down": 322.4
+  },
+  {
+    "stationID": "1:13746311",
+    "stationName": "NYC FLEET / DSNY_BK13_S1",
+    "Address": "2012 Neptune Ave",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-20T10:51:13+00:00",
+    "hours_down": 484.3
+  },
+  {
+    "stationID": "1:13746911",
+    "stationName": "NYC FLEET / DDC_HQ-S2",
+    "Address": "3030 Thomson Ave",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-24T18:56:51+00:00",
+    "hours_down": 380.2
+  },
+  {
+    "stationID": "1:13751061",
+    "stationName": "NYC FLEET / DPR_VCP-S4",
+    "Address": "David Sheridan Plaza",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-09-07T03:48:17+00:00",
+    "hours_down": 3731.4
+  },
+  {
+    "stationID": "1:13752201",
+    "stationName": "NYC FLEET / DPR_VCP-S3",
+    "Address": "6477 US-9",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-09-18T13:51:30+00:00",
+    "hours_down": 3457.3
+  },
+  {
+    "stationID": "1:13753101",
+    "stationName": "NYC FLEET / DSNY_SI1A-S2",
+    "Address": "3 Muldoon Ave",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-09-16T15:27:22+00:00",
+    "hours_down": 3503.7
+  },
+  {
+    "stationID": "1:13754501",
+    "stationName": "NYC FLEET / DSNY_SWM-S2",
+    "Address": "3 Muldoon Ave",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-06-11T11:27:15+00:00",
+    "hours_down": 5835.7
+  },
+  {
+    "stationID": "1:13758031",
+    "stationName": "NYC FLEET / DSNY_SWM-S1",
+    "Address": "3 Muldoon Ave",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-01-21T10:30:20+00:00",
+    "hours_down": 9220.7
+  },
+  {
+    "stationID": "1:13758751",
+    "stationName": "NYC FLEET / DSNY_SI3A-S2",
+    "Address": "3 Muldoon Ave",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-19T09:49:48+00:00",
+    "hours_down": 509.3
+  },
+  {
+    "stationID": "1:13761461",
+    "stationName": "NYC FLEET / DSNY_SI1A-S1",
+    "Address": "3 Muldoon Ave",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-17T02:34:40+00:00",
+    "hours_down": 1308.6
+  },
+  {
+    "stationID": "1:13762031",
+    "stationName": "NYC FLEET / DSNY_SI3A-S1",
+    "Address": "3 Muldoon Ave",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-16T22:04:15+00:00",
+    "hours_down": 2777.1
+  },
+  {
+    "stationID": "1:13765601",
+    "stationName": "NYC FLEET / DEP_BXWM-S1",
+    "Address": "3201 Jerome Ave",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-09-15T17:05:12+00:00",
+    "hours_down": 3526.1
+  },
+  {
+    "stationID": "1:13766381",
+    "stationName": "NYC FLEET / NYPD_FBF-S1",
+    "Address": "3260 Flatbush Ave",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-16T21:16:41+00:00",
+    "hours_down": 569.9
+  },
+  {
+    "stationID": "1:13767351",
+    "stationName": "NYC FLEET / NYCHA_SOTOMY-S1",
+    "Address": "1741 Bruckner Blvd",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-19T14:00:41+00:00",
+    "hours_down": 505.2
+  },
+  {
+    "stationID": "1:13769471",
+    "stationName": "NYC FLEET / NYCHA_RAVENS-S1",
+    "Address": "35-35 21st St",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-11-27T07:05:01+00:00",
+    "hours_down": 1784.1
+  },
+  {
+    "stationID": "1:13770661",
+    "stationName": "NYC FLEET / NYCHA_CYPRHL-S1",
+    "Address": "1260 Sutter Ave",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-26T11:19:18+00:00",
+    "hours_down": 339.9
+  },
+  {
+    "stationID": "1:137947",
+    "stationName": "NYC FLEET / DEP_ASTORIA#2",
+    "Address": "43-1 Berrian Blvd",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-02-05T07:57:00+00:00",
+    "hours_down": 103.2
+  },
+  {
+    "stationID": "1:14000831",
+    "stationName": "NYC FLEET / DOE_BXSCIHS-1",
+    "Address": "750 Baychester Ave Loading dock",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2023-12-29T13:21:55+00:00",
+    "hours_down": 18553.8
+  },
+  {
+    "stationID": "1:14034361",
+    "stationName": "NYC FLEET / DPRROCKAWAY80S1",
+    "Address": "350 80 St",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-09-13T03:52:57+00:00",
+    "hours_down": 3587.3
+  },
+  {
+    "stationID": "1:14035981",
+    "stationName": "NYC FLEET / DPRROCKAWAY80S2",
+    "Address": "350 80 St",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-04T21:42:18+00:00",
+    "hours_down": 1601.5
+  },
+  {
+    "stationID": "1:14036771",
+    "stationName": "NYC FLEET / DPR_OVERLOOK-S1",
+    "Address": "80-30 Park Ln",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-04T20:58:34+00:00",
+    "hours_down": 1602.2
+  },
+  {
+    "stationID": "1:14038991",
+    "stationName": "NYC FLEET / DPR_OVERLOOK-S2",
+    "Address": "80-30 Park Ln",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-12T22:32:10+00:00",
+    "hours_down": 1408.6
+  },
+  {
+    "stationID": "1:14044641",
+    "stationName": "NYC FLEET / DPRRIVERSIDE-S3",
+    "Address": "223 Riverside Dr",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2024-12-12T01:36:20+00:00",
+    "hours_down": 10189.6
+  },
+  {
+    "stationID": "1:14154071",
+    "stationName": "NYC FLEET / DPRINWOODHLL-S1",
+    "Address": "600 W 218th St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-15T21:17:06+00:00",
+    "hours_down": 1337.9
+  },
+  {
+    "stationID": "1:14156241",
+    "stationName": "NYC FLEET / DPR_BUSHWICK-S1",
+    "Address": "29 N 10th St",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-29T18:39:05+00:00",
+    "hours_down": 260.5
+  },
+  {
+    "stationID": "1:14158721",
+    "stationName": "NYC FLEET / DPRTENISCNTR-S1",
+    "Address": "1-00 Meridian Rd",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-22T16:44:06+00:00",
+    "hours_down": 1174.4
+  },
+  {
+    "stationID": "1:14159271",
+    "stationName": "NYC FLEET / DEPOAKWWTP_4_L3",
+    "Address": "751 Mill Rd",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2025-06-23T14:03:37+00:00",
+    "hours_down": 5545.1
+  },
+  {
+    "stationID": "1:14159281",
+    "stationName": "NYC FLEET / DEPOAKWWTP_3_L3",
+    "Address": "751 Mill Rd",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2026-02-05T13:48:06+00:00",
+    "hours_down": 97.4
+  },
+  {
+    "stationID": "1:14159321",
+    "stationName": "NYC FLEET / DEPOAKWWTP_8_L3",
+    "Address": "751 Mill Rd",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2025-10-30T18:21:22+00:00",
+    "hours_down": 2444.8
+  },
+  {
+    "stationID": "1:14159541",
+    "stationName": "NYC FLEET / DPR_MILLPOND-S1",
+    "Address": "5968 Maj Wm Deegan Blvd",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-05T04:51:38+00:00",
+    "hours_down": 1594.3
+  },
+  {
+    "stationID": "1:14160891",
+    "stationName": "NYC FLEET / DPR_DYKERBEA-S1",
+    "Address": "1121 86th St",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-05T20:24:26+00:00",
+    "hours_down": 1578.8
+  },
+  {
+    "stationID": "1:14167031",
+    "stationName": "NYC FLEET / DPR_MIDLAND-S4",
+    "Address": "3 Iroquois St",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-29T18:44:53+00:00",
+    "hours_down": 260.4
+  },
+  {
+    "stationID": "1:14167771",
+    "stationName": "NYC FLEET / NYPD_FBF-S2",
+    "Address": "50 Aviation Rd",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-11T18:15:20+00:00",
+    "hours_down": 1436.9
+  },
+  {
+    "stationID": "1:14169401",
+    "stationName": "NYC FLEET / DOT_GLENDALE-S2",
+    "Address": "69-46 Sybilla St",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-30T18:04:46+00:00",
+    "hours_down": 2445.1
+  },
+  {
+    "stationID": "1:14173671",
+    "stationName": "NYC FLEET / DPR_OLMSTED-S1",
+    "Address": "12 Olmsted Dr",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-22T23:18:04+00:00",
+    "hours_down": 423.9
+  },
+  {
+    "stationID": "1:14175861",
+    "stationName": "NYC FLEET / DPR_BAISLEY-S1",
+    "Address": "118- 9 155th St",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-09T03:30:29+00:00",
+    "hours_down": 1499.7
+  },
+  {
+    "stationID": "1:14191331",
+    "stationName": "NYC FLEET / DPRROCKAWAY97S2",
+    "Address": "9111 Shore Front Pkwy",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-24T03:37:41+00:00",
+    "hours_down": 395.5
+  },
+  {
+    "stationID": "1:14191571",
+    "stationName": "NYC FLEET / DPRROCKAWAY97S1",
+    "Address": "1 Beach 56th Pl",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-29T17:20:17+00:00",
+    "hours_down": 261.8
+  },
+  {
+    "stationID": "1:14197201",
+    "stationName": "NYC FLEET / DEPQUEENSREP-S1",
+    "Address": "106-36 180th St",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-24T04:28:57+00:00",
+    "hours_down": 394.7
+  },
+  {
+    "stationID": "1:14198591",
+    "stationName": "NYC FLEET / DEP_7WARDSI-S4",
+    "Address": "117 K Rd",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-24T05:40:04+00:00",
+    "hours_down": 393.5
+  },
+  {
+    "stationID": "1:14200281",
+    "stationName": "NYC FLEET / DEP_7WARDSI-S6",
+    "Address": "117 K Rd",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-24T04:31:34+00:00",
+    "hours_down": 394.7
+  },
+  {
+    "stationID": "1:14202091",
+    "stationName": "NYC FLEET / DEP_7WARDSI-S7",
+    "Address": "116 K Rd",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-24T04:42:22+00:00",
+    "hours_down": 394.5
+  },
+  {
+    "stationID": "1:14202551",
+    "stationName": "NYC FLEET / DEP_7WARDSI-S5",
+    "Address": "116 K Rd",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-24T05:02:08+00:00",
+    "hours_down": 394.1
+  },
+  {
+    "stationID": "1:14207721",
+    "stationName": "NYC FLEET / DEP_7WARDSI-S3",
+    "Address": "116 K Rd",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-05T00:23:20+00:00",
+    "hours_down": 1598.8
+  },
+  {
+    "stationID": "1:15335201",
+    "stationName": "NYC FLEET / NYPD_75PCT-1",
+    "Address": "1000 Sutter Ave Back lot",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-07-26T12:57:21+00:00",
+    "hours_down": 4754.2
+  },
+  {
+    "stationID": "1:15394841",
+    "stationName": "NYC FLEET / DOT_BAT-#1",
+    "Address": "140 58th St",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-07-08T19:02:56+00:00",
+    "hours_down": 5180.1
+  },
+  {
+    "stationID": "1:15417041",
+    "stationName": "NYC FLEET / DPR_OVRLK_B1_L3",
+    "Address": "80-30 Park Ln",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Unknown",
+    "since_iso": "2024-07-05T14:45:09+00:00",
+    "hours_down": 14016.4
+  },
+  {
+    "stationID": "1:15583741",
+    "stationName": "NYC FLEET / DEP_MNSEWR_2_L3",
+    "Address": "886 Saint Nicholas Avenue",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2024-10-17T14:03:06+00:00",
+    "hours_down": 11521.1
+  },
+  {
+    "stationID": "1:15603281",
+    "stationName": "NYC FLEET / DEP_HNTSPT_4_L3",
+    "Address": "1270 Ryawa Avenue",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2026-02-05T15:30:35+00:00",
+    "hours_down": 95.7
+  },
+  {
+    "stationID": "1:15854641",
+    "stationName": "NYC FLEET / DOE_KNGHWY197#1",
+    "Address": "1599 E 22nd St",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-09-29T14:58:51+00:00",
+    "hours_down": 3192.2
+  },
+  {
+    "stationID": "1:15885601",
+    "stationName": "NYC FLEET / NYCHA_LEX-S1",
+    "Address": "1774 3rd Ave",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-07T03:49:06+00:00",
+    "hours_down": 1547.4
+  },
+  {
+    "stationID": "1:160689",
+    "stationName": "NYC FLEET / DOE_M646",
+    "Address": "321 E 96th St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-02T05:11:11+00:00",
+    "hours_down": 34570.0
+  },
+  {
+    "stationID": "1:160931",
+    "stationName": "NYC FLEET / DHS_COMM#27",
+    "Address": "64 Sunken Garden Loop",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-02T05:26:18+00:00",
+    "hours_down": 34569.7
+  },
+  {
+    "stationID": "1:161021",
+    "stationName": "NYC FLEET / OEMHQCADMAN-12",
+    "Address": "165 Cadman Plaza E",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-02T05:19:10+00:00",
+    "hours_down": 34569.9
+  },
+  {
+    "stationID": "1:16331271",
+    "stationName": "NYC FLEET / DPRCUNINGHM7A-B",
+    "Address": "196-03 Grand Central Pkwy",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-01-14T15:20:12+00:00",
+    "hours_down": 9383.8
+  },
+  {
+    "stationID": "1:16461391",
+    "stationName": "NYC FLEET / DEP_AVIATN_1_L3",
+    "Address": "84 Citation Dr",
+    "City": "Wappingers Falls",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2025-07-14T19:03:50+00:00",
+    "hours_down": 5036.1
+  },
+  {
+    "stationID": "1:16461401",
+    "stationName": "NYC FLEET / DEP_AVIATN_2_L3",
+    "Address": "84 Citation Dr",
+    "City": "Wappingers Falls",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2025-07-14T18:57:52+00:00",
+    "hours_down": 5036.2
+  },
+  {
+    "stationID": "1:1692351",
+    "stationName": "NYC FLEET / NYCHA 23ASH2A B",
+    "Address": "23 Ash St",
+    "City": "Greenpoint",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-20T10:15:47+00:00",
+    "hours_down": 2692.9
+  },
+  {
+    "stationID": "1:1692381",
+    "stationName": "NYC FLEET / NYCHA 23ASH3A B",
+    "Address": "23 Ash St",
+    "City": "Greenpoint",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-20T10:15:47+00:00",
+    "hours_down": 2692.9
+  },
+  {
+    "stationID": "1:17008551",
+    "stationName": "NYC FLEET / FDNYMS ST1",
+    "Address": "135-16 38th Ave",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-04-23T06:11:54+00:00",
+    "hours_down": 7017.0
+  },
+  {
+    "stationID": "1:17084401",
+    "stationName": "NYC FLEET / FDNY_EMS7-1",
+    "Address": "100 Duane Street",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-11-03T22:19:51+00:00",
+    "hours_down": 2344.8
+  },
+  {
+    "stationID": "1:1757861",
+    "stationName": "NYC FLEET / DPRCALVAUX-S2",
+    "Address": "1990 Shore Pkwy",
+    "City": "Gravesend",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-18T07:56:35+00:00",
+    "hours_down": 1279.2
+  },
+  {
+    "stationID": "1:1761481",
+    "stationName": "NYC FLEET / DPRHIGHWAYP2-S1",
+    "Address": "2900 Flatbush Ave",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-24T23:32:27+00:00",
+    "hours_down": 375.6
+  },
+  {
+    "stationID": "1:1779021",
+    "stationName": "NYC FLEET / DPRROCKAWAY30B",
+    "Address": "1-09 Beach 30th St",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-11-16T11:54:14+00:00",
+    "hours_down": 2043.3
+  },
+  {
+    "stationID": "1:1780841",
+    "stationName": "NYC FLEET / DPRCUNINGHM6A-B",
+    "Address": "196-5 Grand Central Parkway N Svc Rd",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-01-14T15:20:08+00:00",
+    "hours_down": 9383.8
+  },
+  {
+    "stationID": "1:1780861",
+    "stationName": "NYC FLEET / DPRCUNINGHM5A-B",
+    "Address": "196-5 Grand Central Parkway N Svc Rd",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-01-14T15:20:08+00:00",
+    "hours_down": 9383.8
+  },
+  {
+    "stationID": "1:178711",
+    "stationName": "NYC FLEET / DPRCUNINGHM3A-B",
+    "Address": "19600 Union Tpke",
+    "City": "Fresh Meadows",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2023-10-10T16:30:01+00:00",
+    "hours_down": 20470.7
+  },
+  {
+    "stationID": "1:1787751",
+    "stationName": "NYC FLEET / DPRMBLOT7-S1",
+    "Address": "829 Father Capodanno Blvd",
+    "City": "Midland Beach",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-31T21:59:51+00:00",
+    "hours_down": 2417.2
+  },
+  {
+    "stationID": "1:1794671",
+    "stationName": "NYC FLEET / DPRSBLOT4-S2",
+    "Address": "405 Father Capodanno Blvd",
+    "City": "South Beach",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-07-18T20:16:25+00:00",
+    "hours_down": 31242.9
+  },
+  {
+    "stationID": "1:1796371",
+    "stationName": "NYC FLEET / DPRROCKAWAY17ST",
+    "Address": "16-25 Seagirt Blvd",
+    "City": "Far Rockaway",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-02-02T23:04:43+00:00",
+    "hours_down": 160.1
+  },
+  {
+    "stationID": "1:1816321",
+    "stationName": "NYC FLEET / DEP_930ZEREGA_1",
+    "Address": "930 Zerega Ave",
+    "City": "East Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2024-01-24T13:35:55+00:00",
+    "hours_down": 17929.6
+  },
+  {
+    "stationID": "1:183833",
+    "stationName": "NYC FLEET / DPR_ALLIED-S#12",
+    "Address": "13 East Rd",
+    "City": "Corona",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-16T21:38:50+00:00",
+    "hours_down": 569.5
+  },
+  {
+    "stationID": "1:183837",
+    "stationName": "NYC FLEET / DPR_ALLIED-S#14",
+    "Address": "13 East Rd",
+    "City": "Corona",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-26T21:30:17+00:00",
+    "hours_down": 1073.7
+  },
+  {
+    "stationID": "1:183845",
+    "stationName": "NYC FLEET / DDC_LIC-S2",
+    "Address": "30-20 Thomson Ave",
+    "City": "Long Island City",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-07-13T05:00:45+00:00",
+    "hours_down": 5074.2
+  },
+  {
+    "stationID": "1:183849",
+    "stationName": "NYC FLEET / DOT_HARPER-S1",
+    "Address": "32-11 Harper St",
+    "City": "Flushing",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-28T20:16:59+00:00",
+    "hours_down": 282.9
+  },
+  {
+    "stationID": "1:183871",
+    "stationName": "NYC FLEET / DPR_ALLIED-S#13",
+    "Address": "15 East Rd",
+    "City": "Corona",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-28T20:13:50+00:00",
+    "hours_down": 282.9
+  },
+  {
+    "stationID": "1:183873",
+    "stationName": "NYC FLEET / DDC_LIC-S1",
+    "Address": "30-20 Thomson Ave",
+    "City": "LIC",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-27T10:46:32+00:00",
+    "hours_down": 316.4
+  },
+  {
+    "stationID": "1:183883",
+    "stationName": "NYC FLEET / NYCHAALSMITH_S1",
+    "Address": "3 St. James Pl",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-27T13:40:31+00:00",
+    "hours_down": 313.5
+  },
+  {
+    "stationID": "1:1852151",
+    "stationName": "NYC FLEET / DPRLYONSPL1A-B",
+    "Address": "15 Murray Hulbert Ave",
+    "City": "Staten Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2024-03-22T16:44:54+00:00",
+    "hours_down": 16534.4
+  },
+  {
+    "stationID": "1:185329",
+    "stationName": "NYC FLEET / DPR_ALLIED-S#11",
+    "Address": "15 East Rd",
+    "City": "Corona",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-31T10:54:55+00:00",
+    "hours_down": 220.3
+  },
+  {
+    "stationID": "1:1854731",
+    "stationName": "NYC FLEET / DPRQNSSHOPS1A-B",
+    "Address": "8298 88th Pl",
+    "City": "Flushing",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-28T18:59:34+00:00",
+    "hours_down": 284.2
+  },
+  {
+    "stationID": "1:186835",
+    "stationName": "NYC FLEET / DEP_GRAHMSVLLE1",
+    "Address": "7870 NY-42",
+    "City": "Grahamsville",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-11T13:52:15+00:00",
+    "hours_down": 1441.3
+  },
+  {
+    "stationID": "1:186837",
+    "stationName": "NYC FLEET / DEP_GRAHMSVLLE2",
+    "Address": "7858 NY-42",
+    "City": "Grahamsville",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-08T03:10:18+00:00",
+    "hours_down": 34428.0
+  },
+  {
+    "stationID": "1:191683",
+    "stationName": "NYC FLEET / DPROLMSTD#15A-B",
+    "Address": "8 Olmsted Dr",
+    "City": "Corona",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-02-05T07:57:54+00:00",
+    "hours_down": 103.2
+  },
+  {
+    "stationID": "1:1917701",
+    "stationName": "NYC FLEET / DEP_QNSREPAIR01",
+    "Address": "106-36 180th St",
+    "City": "Jamaica",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-04T15:38:50+00:00",
+    "hours_down": 1607.5
+  },
+  {
+    "stationID": "1:1919541",
+    "stationName": "NYC FLEET / DEP_QNSREPAIR02",
+    "Address": "106-36 180th St",
+    "City": "Jamaica",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-04T15:46:23+00:00",
+    "hours_down": 1607.4
+  },
+  {
+    "stationID": "1:1919551",
+    "stationName": "NYC FLEET / DEP_QNSREPAIR03",
+    "Address": "106-36 180th St",
+    "City": "Jamaica",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-04T15:44:01+00:00",
+    "hours_down": 1607.4
+  },
+  {
+    "stationID": "1:1923531",
+    "stationName": "NYC FLEET / DEP_QNSREPAIR04",
+    "Address": "106-36 180th St",
+    "City": "Jamaica",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-04T15:37:19+00:00",
+    "hours_down": 1607.6
+  },
+  {
+    "stationID": "1:2009811",
+    "stationName": "NYC FLEET / NYPDBXTRAFFC-S3",
+    "Address": "4223 3rd Ave",
+    "City": "West Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-28T21:09:59+00:00",
+    "hours_down": 282.0
+  },
+  {
+    "stationID": "1:2051441",
+    "stationName": "NYC FLEET / DCAS_1CNTR_1_L3",
+    "Address": "1 Centre St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2026-02-06T15:03:06+00:00",
+    "hours_down": 72.1
+  },
+  {
+    "stationID": "1:210341",
+    "stationName": "NYC FLEET / OEMHQCADMAN-3",
+    "Address": "165 Cadman Plaza E",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2019-03-19T12:59:30+00:00",
+    "hours_down": 60458.2
+  },
+  {
+    "stationID": "1:210389",
+    "stationName": "NYC FLEET / OEMHQCADMAN-4",
+    "Address": "165 Cadman Plaza E",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-02T05:21:31+00:00",
+    "hours_down": 34569.8
+  },
+  {
+    "stationID": "1:210589",
+    "stationName": "NYC FLEET / OEMHQCADMAN-2",
+    "Address": "165 Cadman Plaza E",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-02T05:45:15+00:00",
+    "hours_down": 34569.4
+  },
+  {
+    "stationID": "1:210599",
+    "stationName": "NYC FLEET / OEMHQCADMAN-1",
+    "Address": "165 Cadman Plaza E",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-02T05:46:19+00:00",
+    "hours_down": 34569.4
+  },
+  {
+    "stationID": "1:2120321",
+    "stationName": "NYC FLEET / NYPDHQ_1PP10_L3",
+    "Address": "1 Police Plaza Path",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2023-04-26T17:44:11+00:00",
+    "hours_down": 24477.4
+  },
+  {
+    "stationID": "1:217825",
+    "stationName": "NYC FLEET / DPRNMEADOW#1A-B",
+    "Address": "97th St Transverse",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2023-09-19T13:43:30+00:00",
+    "hours_down": 20977.5
+  },
+  {
+    "stationID": "1:217857",
+    "stationName": "NYC FLEET / DPRNMEADOW#2A-B",
+    "Address": "97th St Transverse",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2023-09-19T13:33:52+00:00",
+    "hours_down": 20977.6
+  },
+  {
+    "stationID": "1:287801",
+    "stationName": "NYC FLEET / DPRABRYAN-S2",
+    "Address": "3278 Middletown Rd",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-29T01:29:18+00:00",
+    "hours_down": 277.7
+  },
+  {
+    "stationID": "1:287931",
+    "stationName": "NYC FLEET / DOE_JFKHS-S1",
+    "Address": "1-49 Teunissen Pl",
+    "City": "Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-11-21T20:36:03+00:00",
+    "hours_down": 1914.6
+  },
+  {
+    "stationID": "1:287981",
+    "stationName": "NYC FLEET / DOEPETRIDES-S1",
+    "Address": "21 Safety City Blvd",
+    "City": "Todt Hill",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-27T18:54:20+00:00",
+    "hours_down": 308.3
+  },
+  {
+    "stationID": "1:288501",
+    "stationName": "NYC FLEET / DOH_BEDFORDHCS1",
+    "Address": "515 Putnam Ave",
+    "City": "Bedford-Stuyvesant",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-09-12T16:59:30+00:00",
+    "hours_down": 3598.2
+  },
+  {
+    "stationID": "1:288521",
+    "stationName": "NYC FLEET / NYPDBXTRAFFC-S1",
+    "Address": "4223 Third Ave",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-16T22:08:08+00:00",
+    "hours_down": 1313.0
+  },
+  {
+    "stationID": "1:288551",
+    "stationName": "NYC FLEET / OEMHQARC-S1",
+    "Address": "42 Red Cross Pl",
+    "City": "Downtown Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-11-24T22:15:49+00:00",
+    "hours_down": 1840.9
+  },
+  {
+    "stationID": "1:288571",
+    "stationName": "NYC FLEET / OEMHQARC-S2",
+    "Address": "42 Red Cross Pl",
+    "City": "Downtown Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-11-13T17:30:46+00:00",
+    "hours_down": 2109.7
+  },
+  {
+    "stationID": "1:315531",
+    "stationName": "NYC FLEET / NYPDBXTRAFFC-S2",
+    "Address": "4223 Third Ave",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2021-09-13T20:37:43+00:00",
+    "hours_down": 38634.5
+  },
+  {
+    "stationID": "1:315761",
+    "stationName": "NYC FLEET / DOT_HARPER-S2",
+    "Address": "32-1 Harper St",
+    "City": "Corona",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-03-28T07:06:32+00:00",
+    "hours_down": 7640.1
+  },
+  {
+    "stationID": "1:315791",
+    "stationName": "NYC FLEET / DPRCUNINGHM-S5",
+    "Address": "196-00 Union Tpke",
+    "City": "Fresh Meadows",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-29T05:51:11+00:00",
+    "hours_down": 273.3
+  },
+  {
+    "stationID": "1:454551",
+    "stationName": "NYC FLEET / DOC_QNSCOURT",
+    "Address": "125-01 82nd Ave",
+    "City": "Kew Gardens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2023-01-19T13:56:35+00:00",
+    "hours_down": 26809.2
+  },
+  {
+    "stationID": "1:5495971",
+    "stationName": "NYC FLEET / DEP_OWLSHD_2_L3",
+    "Address": "6700 Shore Pkwy",
+    "City": "Bay Ridge",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2026-01-18T11:34:26+00:00",
+    "hours_down": 531.6
+  },
+  {
+    "stationID": "1:5525641",
+    "stationName": "NYC FLEET / NYPDSSHOP9_1_L3",
+    "Address": "669 W 158 St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2025-02-03T16:23:29+00:00",
+    "hours_down": 8902.8
+  },
+  {
+    "stationID": "1:5525701",
+    "stationName": "NYC FLEET / NYPDSSHOP9_2_L3",
+    "Address": "669 W 158 St",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2025-02-03T16:22:57+00:00",
+    "hours_down": 8902.8
+  },
+  {
+    "stationID": "1:6191841",
+    "stationName": "NYC FLEET / DHS_BKLMNR-1",
+    "Address": "300 Skillman Ave",
+    "City": "East Williamsburg",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-08-18T06:23:12+00:00",
+    "hours_down": 4208.8
+  },
+  {
+    "stationID": "1:709641",
+    "stationName": "NYC FLEET / DPRRIVERSIDE-S2",
+    "Address": "NY-9A",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-28T01:06:13+00:00",
+    "hours_down": 302.1
+  },
+  {
+    "stationID": "1:709761",
+    "stationName": "NYC FLEET / DPRRIVERSIDE-S1",
+    "Address": "Hudson River Greenway",
+    "City": "New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-29T19:44:15+00:00",
+    "hours_down": 2467.4
+  },
+  {
+    "stationID": "1:715791",
+    "stationName": "NYC FLEET / OEMHQARC-S3",
+    "Address": "165 Cadman Plaza E",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-31T20:17:31+00:00",
+    "hours_down": 2418.9
+  },
+  {
+    "stationID": "1:7177831",
+    "stationName": "NYC FLEET / DOE_ELECBUS",
+    "Address": "231 Malta St",
+    "City": "East New York",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-04-08T18:58:21+00:00",
+    "hours_down": 33668.2
+  },
+  {
+    "stationID": "1:724161",
+    "stationName": "NYC FLEET / DPRABRYAN-S1",
+    "Address": "3278 Middletown Rd",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-17T12:16:58+00:00",
+    "hours_down": 1298.9
+  },
+  {
+    "stationID": "1:725141",
+    "stationName": "NYC FLEET / DPRPRSPCTYARDS2",
+    "Address": "48 West Dr",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-14T16:13:44+00:00",
+    "hours_down": 622.9
+  },
+  {
+    "stationID": "1:726291",
+    "stationName": "NYC FLEET / DPRPRSPCTYARDS1",
+    "Address": "48 West Dr",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-16T04:47:57+00:00",
+    "hours_down": 1330.4
+  },
+  {
+    "stationID": "1:727381",
+    "stationName": "NYC FLEET / DEP_HILLVW-S2",
+    "Address": "492 Central Park Ave",
+    "City": "Yonkers",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-13T07:47:05+00:00",
+    "hours_down": 1399.4
+  },
+  {
+    "stationID": "1:72863",
+    "stationName": "NYC FLEET / DOE1230ZEREGAAV",
+    "Address": "1230 Zerega Ave",
+    "City": "Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-01-01T05:46:42+00:00",
+    "hours_down": 36009.4
+  },
+  {
+    "stationID": "1:729891",
+    "stationName": "NYC FLEET / DOC_ETAYLOR-S",
+    "Address": "Rikers Is Br Appr",
+    "City": "Flushing",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-23T11:32:19+00:00",
+    "hours_down": 411.6
+  },
+  {
+    "stationID": "1:731301",
+    "stationName": "NYC FLEET / DOC_VBAIN-S",
+    "Address": "1 Halleck Street",
+    "City": "Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-01T05:29:54+00:00",
+    "hours_down": 3153.7
+  },
+  {
+    "stationID": "1:784111",
+    "stationName": "NYC FLEET / DPRPEPBURR-S1",
+    "Address": "2029 Burr Ave",
+    "City": "Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-11-30T11:52:05+00:00",
+    "hours_down": 1707.3
+  },
+  {
+    "stationID": "1:784451",
+    "stationName": "NYC FLEET / NYPDACADEMY-S4",
+    "Address": "130-30 28th Ave",
+    "City": "Flushing",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-09-04T21:18:18+00:00",
+    "hours_down": 3785.9
+  },
+  {
+    "stationID": "1:789681",
+    "stationName": "NYC FLEET / DPRPEPBURR-S3",
+    "Address": "2029 Burr Ave",
+    "City": "Middletown - Pelham Bay",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-12T22:01:21+00:00",
+    "hours_down": 1409.2
+  },
+  {
+    "stationID": "1:790081",
+    "stationName": "NYC FLEET / NYPDERIEBASN_S1",
+    "Address": "700 Columbia St",
+    "City": "Red Hook",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-31T16:41:28+00:00",
+    "hours_down": 2422.5
+  },
+  {
+    "stationID": "1:790201",
+    "stationName": "NYC FLEET / DPRPEPBURR-S2",
+    "Address": "2029 Burr Ave",
+    "City": "Middletown - Pelham Bay",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-12-14T05:47:44+00:00",
+    "hours_down": 1377.4
+  },
+  {
+    "stationID": "1:792581",
+    "stationName": "NYC FLEET / DPR_VC-GAR-S2",
+    "Address": "5788 Broadway",
+    "City": "North Riverdale",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2024-03-11T14:53:55+00:00",
+    "hours_down": 16800.3
+  },
+  {
+    "stationID": "1:793731",
+    "stationName": "NYC FLEET / DPRMBLOT8-S1",
+    "Address": "Father Capodanno Blvd",
+    "City": "Midland Beach",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-07T22:31:36+00:00",
+    "hours_down": 2992.7
+  },
+  {
+    "stationID": "1:794751",
+    "stationName": "NYC FLEET / DPRCUNINGHM-S4",
+    "Address": "196-00 Union Tpke",
+    "City": "Fresh Meadows",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-16T21:09:11+00:00",
+    "hours_down": 570.0
+  },
+  {
+    "stationID": "1:795241",
+    "stationName": "NYC FLEET / DPRCUNINGHM-S1",
+    "Address": "Fresh Meadows Cunningham parking lot",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-16T16:49:54+00:00",
+    "hours_down": 574.3
+  },
+  {
+    "stationID": "1:7980111",
+    "stationName": "NYC FLEET / DPR_VCP-S1",
+    "Address": "189 Van Cortlandt Ave W Major Deegan Expy",
+    "City": "The Bronx",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-22T16:13:47+00:00",
+    "hours_down": 430.9
+  },
+  {
+    "stationID": "1:799051",
+    "stationName": "NYC FLEET / DOC_HAZENLOT-S1",
+    "Address": "Hazen St",
+    "City": "Rikers Island",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-25T20:36:49+00:00",
+    "hours_down": 2562.6
+  },
+  {
+    "stationID": "1:801641",
+    "stationName": "NYC FLEET / OEMHQARC-S4",
+    "Address": "165 Cadman Plaza E",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-28T11:39:23+00:00",
+    "hours_down": 291.5
+  },
+  {
+    "stationID": "1:802551",
+    "stationName": "NYC FLEET / DPRFTTOTTEN-S2",
+    "Address": "Murray Ave",
+    "City": "Fort Totten",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2026-01-16T02:38:13+00:00",
+    "hours_down": 588.5
+  },
+  {
+    "stationID": "1:807831",
+    "stationName": "NYC FLEET / DPR_OLMSTED-S2",
+    "Address": "8 Olmsted Dr",
+    "City": "Queens",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-11-18T16:31:25+00:00",
+    "hours_down": 1990.7
+  },
+  {
+    "stationID": "1:819731",
+    "stationName": "NYC FLEET / NYCHA 23ASH1A B",
+    "Address": "23 Ash St",
+    "City": "Greenpoint",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2025-10-20T10:15:44+00:00",
+    "hours_down": 2692.9
+  },
+  {
+    "stationID": "1:8221781",
+    "stationName": "NYC FLEET / DEPCNY_ISL_1_L3",
+    "Address": "2509 Knapp St",
+    "City": "Sheepshead Bay",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2025-06-26T16:16:09+00:00",
+    "hours_down": 5470.9
+  },
+  {
+    "stationID": "1:8221841",
+    "stationName": "NYC FLEET / DEPCNY_ISL_2_L3",
+    "Address": "3002 Knapp St",
+    "City": "Sheepshead Bay",
+    "State": "New York",
+    "charger_type": "Level 3",
+    "since_iso": "2025-06-26T16:17:02+00:00",
+    "hours_down": 5470.9
+  },
+  {
+    "stationID": "1:89219",
+    "stationName": "NYC FLEET / OEMHQCADMAN-6",
+    "Address": "165 Cadman Plaza E",
+    "City": "Brooklyn",
+    "State": "New York",
+    "charger_type": "Level 2",
+    "since_iso": "2022-03-02T05:23:07+00:00",
+    "hours_down": 34569.8
+  }
+]
