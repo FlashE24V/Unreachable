@@ -12,17 +12,16 @@ Inputs (GitHub Actions Secrets):
 - Optional: THRESHOLD_HOURS (default 48)
 
 Outputs (repo root / $GITHUB_WORKSPACE):
-- stations_per_station_slim.csv
-- status_latest_slim.csv (with station_label, port counts, hours_unreachable)
+- stations_per_station_slim.csv              (NO stationID in output)
+- status_latest_slim.csv                     (NO stationID in output; includes hours_unreachable)
 - alerts_unreachable_gt48.json
-- unreachable_event_counts.csv   <-- NEW: per-station unreachable event counts + last start time
+- unreachable_event_counts.csv               (NO stationID in output; includes event counts)
 - .cp_unreach_state.json (persistent state)
 - chargepoint_refresh.log
 
-NEW behavior:
-- Tracks how many times each station *entered* unreachable ("event count")
-  - increments when status transitions REACHABLE/UNKNOWN -> UNREACHABLE
-- Persists count in .cp_unreach_state.json across runs
+Unreachable definition (per ChargePoint API 5.1 getStationStatus.networkStatus):
+- Unreachable iff StationNetworkStatus == "Unreachable" (case-insensitive)
+  (i.e., values like Reachable / Unreachable)
 """
 
 import os, re, time, shutil, tempfile, json
@@ -55,7 +54,7 @@ STATE_PATH        = os.path.join(OUTPUT_DIR, ".cp_unreach_state.json")   # persi
 ALERTS_PATH       = os.path.join(OUTPUT_DIR, "alerts_unreachable_gt48.json")
 ALERT_THRESHOLD_HOURS = int(os.getenv("THRESHOLD_HOURS", "48"))
 
-# NEW: output with unreachable event counts
+# Output with unreachable event counts
 UNREACH_COUNTS_OUT = os.path.join(OUTPUT_DIR, "unreachable_event_counts.csv")
 
 # ===== Search footprint (adjust if needed) =====
@@ -65,7 +64,7 @@ LAT, LON, RADIUS_MILES, STATE_FILTER = 40.7128, -74.0060, 100, "NY"
 PAGE_SIZE, STATUS_CONCURRENCY = 500, 20
 HTTP_TIMEOUT, HTTP_RETRIES = 60, 3
 
-# ===== Output schema =====
+# ===== Output schema (NO stationID) =====
 FINAL_COLS = [
     "stationName","Address","City","State","postalCode","Lat","Long",
     "Charger type","Charger type (legend)","stationModel",
@@ -164,6 +163,7 @@ def parse_status(xml_bytes: bytes):
     for st in body.iter():
         if strip_tag(st.tag) == "stationData":
             sid = (st.findtext("./stationID") or "").strip()
+            # ChargePoint API 5.1: networkStatus values like Reachable / Unreachable
             station_net = (st.findtext("./networkStatus") or "").strip()
             for p in st.findall("./Port"):
                 out.append({
@@ -396,21 +396,25 @@ def save_state(state, path=STATE_PATH):
     os.replace(tmp, path)
 
 def is_unreachable_row(row) -> bool:
-    lps = str(row.get("LastPortStatus") or "").strip().upper()
+    """
+    ChargePoint API 5.1 getStationStatus.networkStatus values like:
+      - Reachable
+      - Unreachable
+    Unreachable iff networkStatus == "Unreachable" (case-insensitive).
+    """
     net = str(row.get("StationNetworkStatus") or "").strip().upper()
-    unreachable_lps = {"UNAVAILABLE", "OUTOFORDER", "FAULTED", "MAINTENANCE"}
-    unreachable_net = {"UNAVAILABLE", "OFFLINE"}
-    return (lps in unreachable_lps) or (net in unreachable_net)
+    return net == "UNREACHABLE"
 
 def build_48h_alerts(df: pd.DataFrame, now_utc: datetime):
     """
-    Returns (state, alerts) where:
-      - state: updated persistent state dict
-      - alerts: list of {stationID, stationName, since_iso, hours_down, City, Address, charger_type}
+    Returns (state, alerts)
 
-    NEW:
-      - state[sid]["unreachable_event_count"] increments when transitioning into UNREACHABLE
-      - state[sid]["last_unreachable_start_iso"] records the start timestamp of the latest unreachable event
+    State fields per stationID:
+      - status: REACHABLE / UNREACHABLE / UNKNOWN
+      - first_unreachable_iso: start time of current outage window (cleared when reachable)
+      - last_seen_reachable_iso
+      - unreachable_event_count: increments when transitioning into UNREACHABLE
+      - last_unreachable_start_iso: timestamp of the most recent unreachable event start
     """
     state = load_state()
     alerts = []
@@ -430,8 +434,6 @@ def build_48h_alerts(df: pd.DataFrame, now_utc: datetime):
             "first_unreachable_iso": None,
             "last_seen_reachable_iso": None,
             "last_alert_iso": None,
-
-            # NEW fields
             "unreachable_event_count": 0,
             "last_unreachable_start_iso": None
         })
@@ -442,7 +444,6 @@ def build_48h_alerts(df: pd.DataFrame, now_utc: datetime):
         prev_status = (was.get("status") or "UNKNOWN").upper()
 
         if cur_unreach:
-            # Count an event only when entering unreachable
             if prev_status != "UNREACHABLE":
                 was["unreachable_event_count"] = int(was.get("unreachable_event_count") or 0) + 1
                 was["last_unreachable_start_iso"] = t_obs_iso
@@ -483,7 +484,10 @@ def main():
         log("ERROR: No station metadata retrieved. Aborting.")
         return
 
-    atomic_write_csv(stations_df, STATIONS_OUT)
+    # Write stations CSV WITHOUT stationID
+    stations_public = stations_df.drop(columns=["stationID"], errors="ignore")
+    atomic_write_csv(stations_public, STATIONS_OUT)
+
     ids = stations_df["stationID"].dropna().unique().tolist()
 
     status_df = fetch_all_statuses(ids)
@@ -511,20 +515,14 @@ def main():
         is_cpf = model.startswith("CPF")  # CPF25/32/50... = single-port Level 2
 
         if is_dc or is_cpf:
-            if chg > 0:
-                return "Charging"
-            if avail > 0:
-                return "Available"
-            if occ > 0:
-                return "Occupied"
+            if chg > 0: return "Charging"
+            if avail > 0: return "Available"
+            if occ > 0: return "Occupied"
             return "Available"
         else:
-            if avail > 0:
-                return "Available"
-            if chg > 0:
-                return "Charging"
-            if occ > 0:
-                return "Occupied"
+            if avail > 0: return "Available"
+            if chg > 0: return "Charging"
+            if occ > 0: return "Occupied"
             return "Available"
 
     merged["station_label"] = merged.apply(compute_label, axis=1)
@@ -544,14 +542,15 @@ def main():
     lps = merged.get("LastPortStatus", pd.Series([""] * len(merged))).map(norm).str.strip().str.upper()
     net = merged.get("StationNetworkStatus", pd.Series([""] * len(merged))).map(norm).str.strip().str.upper()
 
+    # Keep port-level "Faulted" override AND mark Faulted if station network is UNREACHABLE
     fault_mask = (
         lps.isin({"FAULTED","UNAVAILABLE","OUTOFORDER","MAINTENANCE"}) |
-        net.isin({"UNAVAILABLE","OFFLINE"}) |
+        net.eq("UNREACHABLE") |
         ((~fr.isin({"", "NONE", "N/A", "NULL"})) & lps.isin({"FAULTED","UNAVAILABLE","OUTOFORDER","MAINTENANCE"}))
     )
     merged.loc[fault_mask, "station_label"] = "Faulted"
 
-    # --- Build >48h unreachable alerts + save state (NOW also tracks event counts) ---
+    # --- Build >48h unreachable alerts + save state (based ONLY on StationNetworkStatus == Unreachable) ---
     now_utc = datetime.now(timezone.utc)
     state, alerts = build_48h_alerts(merged, now_utc)
     save_state(state)
@@ -560,39 +559,37 @@ def main():
         json.dump(alerts, f, indent=2, ensure_ascii=False)
     log(f"Wrote {ALERTS_PATH} with {len(alerts)} alert(s)")
 
-    # --- NEW: write unreachable event counts per station ---
+    # --- Write unreachable event counts per station (WITHOUT stationID) ---
     counts_rows = []
     for sid, info in state.items():
         counts_rows.append({
-            "stationID": sid,
+            "stationID": sid,  # internal for merge; dropped before write
             "unreachable_event_count": int(info.get("unreachable_event_count") or 0),
+            "status": info.get("status"),
             "last_unreachable_start_iso": info.get("last_unreachable_start_iso"),
             "current_first_unreachable_iso": info.get("first_unreachable_iso"),
             "last_seen_reachable_iso": info.get("last_seen_reachable_iso"),
-            "status": info.get("status"),
         })
-
     counts_df = pd.DataFrame(counts_rows)
 
-    # Join station metadata for readability
-    if stations_df is not None and not stations_df.empty:
+    if stations_df is not None and not stations_df.empty and not counts_df.empty:
         add_cols = ["stationID", "stationName", "Address", "City", "State", "Charger type", "stationModel"]
         counts_df = counts_df.merge(stations_df[add_cols], on="stationID", how="left")
 
     preferred = [
-        "stationID","stationName","Address","City","State","Charger type","stationModel",
+        "stationName","Address","City","State","Charger type","stationModel",
         "unreachable_event_count","status",
         "last_unreachable_start_iso","current_first_unreachable_iso","last_seen_reachable_iso",
     ]
     for c in preferred:
         if c not in counts_df.columns:
             counts_df[c] = None
-    counts_df = counts_df[preferred]
+    counts_df = counts_df[preferred]  # stationID not included
 
     atomic_write_csv(counts_df, UNREACH_COUNTS_OUT)
     log(f"Wrote {UNREACH_COUNTS_OUT} with {len(counts_df):,} rows")
 
-    # --- Compute hours_unreachable for CSV visibility (unchanged behavior) ---
+    # --- Compute hours_unreachable for CSV visibility (based ONLY on StationNetworkStatus == Unreachable) ---
     since_map = {
         sid: info.get("first_unreachable_iso")
         for sid, info in state.items()
@@ -603,15 +600,11 @@ def main():
     since_series = merged["stationID"].map(since_map)
     since_dt = pd.to_datetime(since_series, utc=True, errors="coerce")
 
-    unreachable_mask = (
-        lps.isin({"UNAVAILABLE","OUTOFORDER","FAULTED","MAINTENANCE"}) |
-        net.isin({"UNAVAILABLE","OFFLINE"})
-    )
-
+    unreachable_mask = net.eq("UNREACHABLE")
     hours = (now_utc - since_dt).dt.total_seconds() / 3600.0
     merged.loc[unreachable_mask & since_dt.notna(), "hours_unreachable"] = hours.round(1)
 
-    final_df = slim_output(merged)
+    final_df = slim_output(merged)  # outputs only FINAL_COLS (NO stationID)
     atomic_write_csv(final_df, STATUS_OUT)
     log(f"Wrote {STATUS_OUT} with {len(final_df):,} rows")
 
