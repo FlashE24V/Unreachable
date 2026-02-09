@@ -163,7 +163,6 @@ def parse_status(xml_bytes: bytes):
     for st in body.iter():
         if strip_tag(st.tag) == "stationData":
             sid = (st.findtext("./stationID") or "").strip()
-            # ChargePoint API 5.1: networkStatus values like Reachable / Unreachable
             station_net = (st.findtext("./networkStatus") or "").strip()
             for p in st.findall("./Port"):
                 out.append({
@@ -274,10 +273,14 @@ def fetch_stations_full_per_station() -> pd.DataFrame:
 
     grouped["Charger type"] = grouped["stationModel"].apply(classify)
 
+    # ✅ UPDATED legend logic: keeps old behavior AND supports newer Solar naming
     def legend(base, sg):
         sg_u = (sg or "")
+
         is_public = bool(re.search(r"\bPublic Stations\b", sg_u, flags=re.IGNORECASE))
-        is_solar  = bool(re.search(r"\bSolar Stations\b",  sg_u, flags=re.IGNORECASE))
+        # Backwards-compatible: matches "Solar Stations" AND any group containing "Solar"
+        is_solar  = bool(re.search(r"\bSolar\b", sg_u, flags=re.IGNORECASE))
+
         label = base
         if base and base.startswith("Gateway"):
             return None
@@ -396,26 +399,10 @@ def save_state(state, path=STATE_PATH):
     os.replace(tmp, path)
 
 def is_unreachable_row(row) -> bool:
-    """
-    ChargePoint API 5.1 getStationStatus.networkStatus values like:
-      - Reachable
-      - Unreachable
-    Unreachable iff networkStatus == "Unreachable" (case-insensitive).
-    """
     net = str(row.get("StationNetworkStatus") or "").strip().upper()
     return net == "UNREACHABLE"
 
 def build_48h_alerts(df: pd.DataFrame, now_utc: datetime):
-    """
-    Returns (state, alerts)
-
-    State fields per stationID:
-      - status: REACHABLE / UNREACHABLE / UNKNOWN
-      - first_unreachable_iso: start time of current outage window (cleared when reachable)
-      - last_seen_reachable_iso
-      - unreachable_event_count: increments when transitioning into UNREACHABLE
-      - last_unreachable_start_iso: timestamp of the most recent unreachable event start
-    """
     state = load_state()
     alerts = []
 
@@ -503,7 +490,6 @@ def main():
         if c not in merged.columns:
             merged[c] = 0
 
-    # Priority by level with CPF single-port special case
     def compute_label(row):
         charger_type = (row.get("Charger type") or "").upper()
         model = (row.get("stationModel") or "").upper()
@@ -512,7 +498,7 @@ def main():
         occ   = int(row.get("ports_occupied", 0) or 0)
 
         is_dc  = ("LEVEL 3" in charger_type) or ("DC" in charger_type) or ("FAST" in charger_type)
-        is_cpf = model.startswith("CPF")  # CPF25/32/50... = single-port Level 2
+        is_cpf = model.startswith("CPF")
 
         if is_dc or is_cpf:
             if chg > 0: return "Charging"
@@ -527,13 +513,10 @@ def main():
 
     merged["station_label"] = merged.apply(compute_label, axis=1)
 
-    # Normalize fields
     def norm(x):
-        if x is None:
-            return ""
+        if x is None: return ""
         try:
-            if pd.isna(x):
-                return ""
+            if pd.isna(x): return ""
         except Exception:
             pass
         return str(x)
@@ -542,7 +525,6 @@ def main():
     lps = merged.get("LastPortStatus", pd.Series([""] * len(merged))).map(norm).str.strip().str.upper()
     net = merged.get("StationNetworkStatus", pd.Series([""] * len(merged))).map(norm).str.strip().str.upper()
 
-    # Keep port-level "Faulted" override AND mark Faulted if station network is UNREACHABLE
     fault_mask = (
         lps.isin({"FAULTED","UNAVAILABLE","OUTOFORDER","MAINTENANCE"}) |
         net.eq("UNREACHABLE") |
@@ -550,7 +532,6 @@ def main():
     )
     merged.loc[fault_mask, "station_label"] = "Faulted"
 
-    # --- Build >48h unreachable alerts + save state (based ONLY on StationNetworkStatus == Unreachable) ---
     now_utc = datetime.now(timezone.utc)
     state, alerts = build_48h_alerts(merged, now_utc)
     save_state(state)
@@ -559,11 +540,10 @@ def main():
         json.dump(alerts, f, indent=2, ensure_ascii=False)
     log(f"Wrote {ALERTS_PATH} with {len(alerts)} alert(s)")
 
-    # --- Write unreachable event counts per station (WITHOUT stationID) ---
     counts_rows = []
     for sid, info in state.items():
         counts_rows.append({
-            "stationID": sid,  # internal for merge; dropped before write
+            "stationID": sid,
             "unreachable_event_count": int(info.get("unreachable_event_count") or 0),
             "status": info.get("status"),
             "last_unreachable_start_iso": info.get("last_unreachable_start_iso"),
@@ -584,18 +564,11 @@ def main():
     for c in preferred:
         if c not in counts_df.columns:
             counts_df[c] = None
-    counts_df = counts_df[preferred]  # stationID not included
-
+    counts_df = counts_df[preferred]
     atomic_write_csv(counts_df, UNREACH_COUNTS_OUT)
     log(f"Wrote {UNREACH_COUNTS_OUT} with {len(counts_df):,} rows")
 
-    # --- Compute hours_unreachable for CSV visibility (based ONLY on StationNetworkStatus == Unreachable) ---
-    since_map = {
-        sid: info.get("first_unreachable_iso")
-        for sid, info in state.items()
-        if info.get("first_unreachable_iso")
-    }
-
+    since_map = {sid: info.get("first_unreachable_iso") for sid, info in state.items() if info.get("first_unreachable_iso")}
     merged["hours_unreachable"] = 0.0
     since_series = merged["stationID"].map(since_map)
     since_dt = pd.to_datetime(since_series, utc=True, errors="coerce")
@@ -604,7 +577,7 @@ def main():
     hours = (now_utc - since_dt).dt.total_seconds() / 3600.0
     merged.loc[unreachable_mask & since_dt.notna(), "hours_unreachable"] = hours.round(1)
 
-    final_df = slim_output(merged)  # outputs only FINAL_COLS (NO stationID)
+    final_df = slim_output(merged)
     atomic_write_csv(final_df, STATUS_OUT)
     log(f"Wrote {STATUS_OUT} with {len(final_df):,} rows")
 
