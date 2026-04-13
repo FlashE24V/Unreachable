@@ -706,3 +706,11 @@
 [2026-04-11 10:31:44] Wrote /home/runner/work/Unreachable/Unreachable/alerts_unreachable_gt48.json with 156 alert(s)
 [2026-04-11 10:31:44] Wrote /home/runner/work/Unreachable/Unreachable/unreachable_event_counts.csv with 1,646 rows
 [2026-04-11 10:31:44] Wrote /home/runner/work/Unreachable/Unreachable/status_latest_slim.csv with 1,500 rows
+[2026-04-13 11:14:25] Working dir: /home/runner/work/Unreachable/Unreachable
+[2026-04-13 11:14:25] Fetching stations via getStations…
+[2026-04-13 11:14:45] Fetching status for 1643 stations (concurrency=20)…
+[2026-04-13 11:15:11] Fetching load for 1643 stations (concurrency=20)…
+[2026-04-13 11:15:15] HTTP/SOAP error (try 1/3): 500 Server Error: Internal Server Error for url: https://webservices.chargepoint.com/webservices/chargepoint/services/5.1
+[2026-04-13 11:15:32] Wrote /home/runner/work/Unreachable/Unreachable/alerts_unreachable_gt48.json with 170 alert(s)
+[2026-04-13 11:15:32] Wrote /home/runner/work/Unreachable/Unreachable/unreachable_event_counts.csv with 1,646 rows
+[2026-04-13 11:15:32] Wrote /home/runner/work/Unreachable/Unreachable/status_latest_slim.csv with 1,500 rows
