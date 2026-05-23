@@ -854,3 +854,11 @@
 [2026-05-21 12:42:54] Wrote /home/runner/work/Unreachable/Unreachable/alerts_unreachable_gt48.json with 156 alert(s)
 [2026-05-21 12:42:54] Wrote /home/runner/work/Unreachable/Unreachable/unreachable_event_counts.csv with 1,688 rows
 [2026-05-21 12:42:54] Wrote /home/runner/work/Unreachable/Unreachable/status_latest_slim.csv with 1,537 rows
+[2026-05-23 11:07:16] Working dir: /home/runner/work/Unreachable/Unreachable
+[2026-05-23 11:07:16] Fetching stations via getStations…
+[2026-05-23 11:07:27] Fetching status for 1692 stations (concurrency=20)…
+[2026-05-23 11:07:50] Fetching load for 1692 stations (concurrency=20)…
+[2026-05-23 11:08:06] HTTP/SOAP error (try 1/3): 502 Server Error: Bad Gateway for url: https://webservices.chargepoint.com/webservices/chargepoint/services/5.1
+[2026-05-23 11:08:11] Wrote /home/runner/work/Unreachable/Unreachable/alerts_unreachable_gt48.json with 144 alert(s)
+[2026-05-23 11:08:11] Wrote /home/runner/work/Unreachable/Unreachable/unreachable_event_counts.csv with 1,698 rows
+[2026-05-23 11:08:11] Wrote /home/runner/work/Unreachable/Unreachable/status_latest_slim.csv with 1,547 rows
