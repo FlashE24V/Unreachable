@@ -1074,3 +1074,10 @@
 [2026-07-29 11:58:39] Wrote /home/runner/work/Unreachable/Unreachable/alerts_unreachable_gt48.json with 175 alert(s)
 [2026-07-29 11:58:39] Wrote /home/runner/work/Unreachable/Unreachable/unreachable_event_counts.csv with 1,769 rows
 [2026-07-29 11:58:39] Wrote /home/runner/work/Unreachable/Unreachable/status_latest_slim.csv with 1,618 rows
+[2026-07-31 11:54:42] Working dir: /home/runner/work/Unreachable/Unreachable
+[2026-07-31 11:54:42] Fetching stations via getStations…
+[2026-07-31 11:54:52] Fetching status for 1764 stations (concurrency=20)…
+[2026-07-31 11:55:16] Fetching load for 1764 stations (concurrency=20)…
+[2026-07-31 11:55:34] Wrote /home/runner/work/Unreachable/Unreachable/alerts_unreachable_gt48.json with 178 alert(s)
+[2026-07-31 11:55:34] Wrote /home/runner/work/Unreachable/Unreachable/unreachable_event_counts.csv with 1,770 rows
+[2026-07-31 11:55:34] Wrote /home/runner/work/Unreachable/Unreachable/status_latest_slim.csv with 1,619 rows
